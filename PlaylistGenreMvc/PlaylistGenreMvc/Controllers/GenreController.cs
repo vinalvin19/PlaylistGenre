@@ -32,5 +32,31 @@ namespace PlaylistGenreMvc.Controllers
             return View(genreList);
         }
 
-        
+        public ActionResult Create()
+        {
+            //GenreModel model = new GenreModel();
+            //return View(model);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(GenreModel model)
+        {
+            try
+            {
+                Genre genre = new Genre()
+                {
+                    Name = model.Name
+                };
+
+                context.Genres.InsertOnSubmit(genre);
+                context.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
+    }
 }
