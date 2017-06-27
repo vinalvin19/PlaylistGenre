@@ -31,4 +31,6 @@ namespace PlaylistGenreMvc.Controllers
             }
             return View(genreList);
         }
+
+        
 }
