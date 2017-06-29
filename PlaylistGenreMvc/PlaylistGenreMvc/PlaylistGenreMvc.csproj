@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GenreController.cs" />
+    <Compile Include="Controllers\SongController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -152,6 +153,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Operation.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Models\SongModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +202,8 @@
     <Content Include="Views\Genre\Contact.cshtml" />
     <Content Include="Views\Genre\Index.cshtml" />
     <Content Include="Views\Genre\Create.cshtml" />
+    <Content Include="Views\Song\Index.cshtml" />
+    <Content Include="Views\Song\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
