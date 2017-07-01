@@ -204,6 +204,8 @@
     <Content Include="Views\Genre\Create.cshtml" />
     <Content Include="Views\Song\Index.cshtml" />
     <Content Include="Views\Song\Create.cshtml" />
+    <Content Include="Views\Song\Edit.cshtml" />
+    <Content Include="Views\Song\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

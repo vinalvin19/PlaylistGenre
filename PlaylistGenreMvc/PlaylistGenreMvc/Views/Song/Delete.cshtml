@@ -1,0 +1,55 @@
+﻿@model PlaylistGenreMvc.Models.SongModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm())
+{
+
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>BookModel</legend>
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Title)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Singer)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Singer)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Year)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Year)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Writer)
+        </div>
+
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Writer)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.GenreName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.GenreName)
+        </div>
+    </fieldset>
+
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+} 

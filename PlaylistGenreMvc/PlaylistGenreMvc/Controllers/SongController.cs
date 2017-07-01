@@ -66,6 +66,43 @@ namespace PlaylistGenreMvc.Controllers
             }
         }
 
+        public ActionResult Edit(int id)
+        {
+            SongModel model = context.Songs.Where(some => some.Id == id).Select(some =>
+                                new SongModel()
+                                {
+                                    Id = some.Id,
+                                    Title = some.Title,
+                                    Singer = some.Singer,
+                                    Year = some.Year,
+                                    Writer = some.Writer,
+                                    GenreId = some.Id
+                                }).SingleOrDefault();
+
+            PreparePublisher(model);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(SongModel model)
+        {
+            try
+            {
+                Song song = context.Songs.Where(some => some.Id == model.Id).Single<Song>();
+                song.Title = model.Title;
+                song.Singer = model.Singer;
+                song.Year = model.Year;
+                song.Writer = model.Writer;
+                song.GenreId = model.GenreId;
+                context.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
+
         private void PreparePublisher(SongModel model)
         {
             model.Genres = context.Genres.AsQueryable<Genre>().Select(x =>
@@ -74,6 +111,37 @@ namespace PlaylistGenreMvc.Controllers
                         Text = x.Name,
                         Value = x.Id.ToString()
                     });
+        }
+
+        public ActionResult Delete(int id)
+        {
+            SongModel model = context.Songs.Where(some => some.Id == id).Select(some =>
+                                  new SongModel()
+                                  {
+                                      Id = some.Id,
+                                      Title = some.Title,
+                                      Singer = some.Singer,
+                                      Year = some.Year,
+                                      Writer = some.Writer,
+                                      GenreName = some.Genre.Name
+                                  }).SingleOrDefault();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(SongModel model)
+        {
+            try
+            {
+                Song song = context.Songs.Where(some => some.Id == model.Id).Single<Song>();
+                context.Songs.DeleteOnSubmit(song);
+                context.SubmitChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
+            }
         }
     }
 }
